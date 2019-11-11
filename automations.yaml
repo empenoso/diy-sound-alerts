@@ -1,0 +1,158 @@
+###################################################
+#                                                 #
+#                 Голосовые оповещения            #
+#                                                 #
+################################################### 
+
+- alias: Text-to-Speech. Noon
+  trigger:
+    - platform: time
+      at: '12:00:00'
+  condition: 
+    condition: or
+    conditions:
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+  action:
+    - service: homeassistant.turn_on
+      data:
+         entity_id: light.girlianda_ws2811
+         brightness: 255
+         effect: My Fast Random Effect
+    - service: media_player.volume_set
+      data_template:
+        volume_level: 0.03
+    - service: homeassistant.turn_on
+      entity_id: switch.kolonki_radiotehnika_s_30a
+    - delay: '00:00:01'
+    - service: tts.google_say
+      entity_id: media_player.mopidy
+      data_template:
+        message: "Полдень. Температура в ХХХХХ составляет {{states('sensor.temperature_329')}} градусов, на улице сейчас {{states('sensor.owm_condition')}}, ветер {{states('sensor.owm_wind_speed')}} метров в секунду."
+    - delay: '00:00:14'
+    - service: media_player.volume_set
+      data_template:
+        volume_level: 0.07
+    - service: tts.google_say
+      entity_id: media_player.mopidy
+      data_template:
+        message: "Курс S&P 500 составляет {{states('sensor.s_p_500') | round(0) }} пунктов. Доллар к рублю торгуется сегодня, {{ now().day }} числа по курсу {{states('sensor.usd_rub') | round(1) }}. "
+    - delay: '00:00:20'
+    - service: homeassistant.turn_off
+      entity_id: switch.kolonki_radiotehnika_s_30a
+    - service: homeassistant.turn_off
+      entity_id: light.girlianda_ws2811
+
+
+- alias: Text-to-Speech. Motion ХХХХХ
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kamera_ХХХХХ_pir_alarm
+      from: 'off'
+      to: 'on'
+  condition: 
+    condition: and
+    conditions:
+     - condition: time
+       before: '22:00:00'
+       after: '11:00:00'
+     - condition: or
+       conditions:
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+  action:
+    - service: media_player.volume_set
+      data_template:
+        volume_level: 0.03
+    - service: homeassistant.turn_on
+      entity_id: switch.kolonki_radiotehnika_s_30a
+    - delay: '00:00:01'
+    - service: tts.google_say
+      entity_id: media_player.mopidy
+      data_template:
+        message: "Движение ХХХХХ сейчас в {{ now().hour }} часов {{ now().minute }} минут. "
+    - delay: '00:00:15'
+    - service: homeassistant.turn_off
+      entity_id: switch.kolonki_radiotehnika_s_30a
+
+
+- alias: Text-to-Speech. ХХХХХ
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kamera_ХХХХХ_pir_alarm
+      from: 'off'
+      to: 'on'
+  condition: 
+    condition: and
+    conditions:
+     - condition: time
+       before: '22:00:00'
+       after: '11:00:00'
+     - condition: or
+       conditions:
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+        - condition: state
+          entity_id: device_tracker.хххххххххх
+          state: 'home'
+  action:
+    - service: media_player.volume_set
+      data_template:
+        volume_level: 0.03
+    - service: homeassistant.turn_on
+      entity_id: switch.kolonki_radiotehnika_s_30a
+    - delay: '00:00:01'
+    - service: tts.google_say # tts.yandextts_say
+      entity_id: media_player.mopidy
+      data_template:
+        message: "Движение ХХХХХ сейчас в {{ now().hour }} часов {{ now().minute }} минут. "
+    - delay: '00:00:15'
+    - service: homeassistant.turn_off
+      entity_id: switch.kolonki_radiotehnika_s_30a
+
+- alias: Text-to-Speech. First
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dver_ХХХХХ
+      from: 'off'
+      to: 'on'
+  condition: 
+    - condition: time
+      before: '11:00:00'
+      after: '06:10:00'
+    - condition: numeric_state
+      entity_id: 'sensor.dver_ХХХХХ_last_use'
+      above: 7 #выше 
+      below: 24 #ниже
+  action:
+    - service: media_player.volume_set
+      data_template:
+        volume_level: 0.03
+    - service: homeassistant.turn_on
+      entity_id: switch.kolonki_radiotehnika_s_30a
+    - delay: '00:00:01'
+    - service: tts.google_say
+      entity_id: media_player.mopidy
+      data_template:
+        message: "Вы сегодня первый в {{ now().hour }} часов {{ now().minute }} минут пришли в ХХХХХ. Дверь ХХХХХ последний раз открывалась {%- set hours = ( (as_timestamp(now()) - as_timestamp(states.binary_sensor.dver_ХХХХХ.last_changed) )|int/3600) | round(0)  %} {%- set minutes = ( (as_timestamp(now()) - as_timestamp(states.binary_sensor.dver_ХХХХХ.last_changed) )|int/60) | round(0) %} {{ '{} часов'.format(hours) if hours > 0 else '{} минут'.format(minutes) }} назад. Дверь ХХХХХ {%- set hours = ( (as_timestamp(now()) - as_timestamp(states.binary_sensor.dver_ХХХХХ.last_changed) )|int/3600) | round(0)  %} {%- set minutes = ( (as_timestamp(now()) - as_timestamp(states.binary_sensor.dver_ХХХХХ.last_changed) )|int/60) | round(0) %} {{ '{} часов'.format(hours) if hours > 0 else '{} минут'.format(minutes) }} назад."
+    - delay: '00:00:40'
+    - service: homeassistant.turn_off
+      entity_id: switch.kolonki_radiotehnika_s_30a
