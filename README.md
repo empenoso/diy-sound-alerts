@@ -12,7 +12,11 @@
 
 [tda7492_speakers.yaml](tda7492_speakers.yaml)
 
+![ESPHome.png](ESPHome.png)
+
 # Голосовые оповещения из Home Assistant
-В [automations.yaml](automations.yaml) представлены различные правила для голосовых оповещений, а в [configuration.yaml](configuration.yaml) - настройки бесплатного Text to Speech (TTS). Образец звука в []().
+В [automations.yaml](automations.yaml) представлены различные правила для голосовых оповещений, а в [configuration.yaml](configuration.yaml) - настройки бесплатного Text to Speech (TTS). Образец звука в [ced7f955cfb440b12c419befd25ffa7fd7854989_ru_-_google_translate.mp3](ced7f955cfb440b12c419befd25ffa7fd7854989_ru_-_google_translate.mp3).
+
+![Home%20Assistant.png](Home%20Assistant.png)
 
 # Фотографии
