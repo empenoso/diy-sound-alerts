@@ -1,0 +1,8 @@
+tts:
+  - platform: google_translate
+    language: 'ru'
+    cache: true
+    cache_dir: /config/tts
+    time_memory: 300
+    service_name: google_say
+    base_url: http://192.168.15.10:8123
