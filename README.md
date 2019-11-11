@@ -20,3 +20,5 @@
 ![Home%20Assistant.png](Home%20Assistant.png)
 
 # Фотографии
+![Foto](00100dPORTRAIT_00100_BURST20191110161347638_COVER.jpg)
+![Foto](IMG_20191110_161513.jpg)
