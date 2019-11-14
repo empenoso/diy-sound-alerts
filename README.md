@@ -1,4 +1,11 @@
-# Звуковые оповещения на Raspberry Pi c Home Assistant или без него :radio: ![GitHub](https://img.shields.io/github/license/empenoso/diy-cheap-automated-blinds) ![GitHub](https://img.shields.io/badge/labor%20hours-2%20hours-orange)
+# Звуковые оповещения на Raspberry Pi :radio: ![GitHub](https://img.shields.io/github/license/empenoso/diy-cheap-automated-blinds) ![GitHub](https://img.shields.io/badge/labor%20hours-2%20hours-orange)
+
+Вместе c Home Assistant или без него.
+
+Read this in other languages: [English](README.md), [Русский язык](README.ru.md).
+
+______________
+
 После того, как в буквальном смысле нашел старые колонки [Radiotehnika S-30A](http://ldsound.ru/radiotehnika-s-30a/) было решено сделать голосовые оповещения для своего умного дома. Для того, чтобы запитать колонки необходим усилитель - выбрал [2 x 50W TDA7492 Class D High-Power Digital Amplifier Board](https://www.aliexpress.com/item/33025736088.html), потому что я не меломан, а для работы колонок вполне хватает.
 
 Сначала использовал отдельную Raspberry Pi 1 с [Volumio](https://volumio.org/), все отлично работало, но после обновления  Volumio летом 2019 года что-то сломалось и пришлось использовать другой образ - [Pi MusicBox](https://www.pimusicbox.com/). Такую связку можно использовать и без домашней автоматизации.
