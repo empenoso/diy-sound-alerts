@@ -1,4 +1,4 @@
-# Звуковые оповещения на Raspberry Pi :radio: ![GitHub](https://img.shields.io/github/license/empenoso/diy-cheap-automated-blinds) ![GitHub](https://img.shields.io/badge/labor%20hours-2%20hours-orange)
+# Звуковые оповещения на малине pi :radio: ![GitHub](https://img.shields.io/github/license/empenoso/diy-cheap-automated-blinds) ![GitHub](https://img.shields.io/badge/labor%20hours-2%20hours-orange)
 
 Вместе c Home Assistant или без него.
 
